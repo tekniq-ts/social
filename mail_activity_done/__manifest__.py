@@ -7,7 +7,10 @@
     "license": "LGPL-3",
     "category": "Discuss",
     "depends": ["mail"],
-    "data": ["views/templates.xml", "views/mail_activity_views.xml"],
+    "data": [
+        #"views/templates.xml", 
+        "views/mail_activity_views.xml"
+    ],
     "pre_init_hook": "pre_init_hook",
     "post_load": "post_load_hook",
     "uninstall_hook": "uninstall_hook",
