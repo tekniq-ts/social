@@ -29,7 +29,8 @@ class MailingContact(models.Model):
                 )
                 if contact.list_ids & other_contact.mapped("list_ids"):
                     raise ValidationError(
-                        _("Partner already exists in one of " "these mailing lists")
+                        _("Partner already exists in one of these mailing lists")
+                        + ": %s" % contact.partner_id.display_name
                     )
 
     @api.onchange("partner_id")
@@ -100,6 +101,8 @@ class MailingContact(models.Model):
 
     def _set_partner(self):
         self.ensure_one()
+        if not self.email:
+            return
         m_partner = self.env["res.partner"]
         # Look for a partner with that email
         email = self.email.strip()

@@ -1,5 +1,5 @@
-# Copyright 2016-17 Eficent Business and IT Consulting Services S.L.
-#   (http://www.eficent.com)
+# Copyright 2016-17 ForgeFlow S.L.
+#   (http://www.forgeflow.com)
 # Copyright 2016 Serpent Consulting Services Pvt. Ltd.
 #   (<http://www.serpentcs.com>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
@@ -50,8 +50,7 @@ class MailThread(models.AbstractModel):
             res["fields"].update(
                 {"message_content": {"type": "char", "string": _("Message Content")}}
             )
-
-            for node in doc.xpath("//field[last()]"):
+            for node in doc.xpath("/search/field[last()]"):
                 # Add message_content in search view
                 elem = etree.Element("field", {"name": "message_content"})
                 node.addnext(elem)
